@@ -3,3 +3,6 @@ dist
 .static-cache
 static/tmp
 *.sqlite3
+
+*~
+

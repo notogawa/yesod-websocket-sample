@@ -23,7 +23,7 @@ import qualified Network.Wai.Handler.WebSockets as WaiWS
 import qualified Network.Wai.Application.Static as Static
 import Data.FileEmbed (embedDir)
 
-type Client = (Text, WS.Sink WS.Hybi00)
+type Client = (Text, WS.Sink WS.Hybi10)
 
 type ServerState = [Client]
 
@@ -52,12 +52,13 @@ staticApp = Static.staticApp Static.defaultFileServerSettings
   { Static.ssFolder = Static.embeddedLookup $ Static.toEmbedded $(embedDir "static")
   }
 
-application :: MVar ServerState -> WS.Request -> WS.WebSockets WS.Hybi00 ()
+application :: MVar ServerState -> WS.Request -> WS.WebSockets WS.Hybi10 ()
 application state rq = do
     WS.acceptRequest rq
     WS.getVersion >>= liftIO . putStrLn . ("Client version: " ++)
     sink <- WS.getSink
     msg <- WS.receiveData
+    liftIO $ print msg
     clients <- liftIO $ readMVar state
     case msg of
         _   | not (prefix `T.isPrefixOf` msg) ->

@@ -1,0 +1,19 @@
+<h1>Yesod with WebSocket example
+<div id="chat-main">
+  <div id="warnings">
+  <div id="join-section">
+    <h2>Join
+      <form id="join-form" action="javascript: void(0)">
+        <label for="user">Username:
+          <input id="user" type="text" size="12">
+          <input id="welcome" type="submit" value="Join">
+  <div id="users-section" style="display: none">
+    <h2>Users
+      <ul id="users">
+  <div id="chat-section" style="display: none">
+    <h2>Chat
+      <div id="messages">
+        <br>
+          <form id="message-form" action="javascript: void(0)">
+            <input id="text" type="text" size="40">
+            <input id="talk" type="submit" value="Send">

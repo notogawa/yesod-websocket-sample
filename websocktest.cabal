@@ -29,6 +29,7 @@ library
                      Settings.StaticFiles
                      Settings.Development
                      Handler.Home
+                     Handler.WSChat
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -85,6 +86,14 @@ executable         websocktest
     build-depends:     base
                      , websocktest
                      , yesod-default
+                     , file-embed
+                     , wai-app-static
+                     , wai-websockets
+                     , warp
+                     , wai
+                     , websockets
+                     , text
+                     , transformers
 
 test-suite test
     type:              exitcode-stdio-1.0
